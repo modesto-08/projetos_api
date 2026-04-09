@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Cães 🐶</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #ddd;
+            transition: 0.3s;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Gerador de Cão 🐾</h1>
+
+        <!-- Imagem padrão -->
+        <img id="dogImage" src="https://via.placeholder.com/300" alt="Cão">
+
+        <br>
+
+        <!-- Botão -->
+        <button onclick="gerarCao()">Gerar Cão</button>
+    </div>
+
+    <script>
+        function gerarCao() {
+            fetch('https://dog.ceo/api/breeds/image/random')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('dogImage').src = data.message;
+                })
+                .catch(error => {
+                    alert('Erro ao carregar imagem!');
+                    console.log(error);
+                });
+        }
+    </script>
+
+</body>
+</html>
